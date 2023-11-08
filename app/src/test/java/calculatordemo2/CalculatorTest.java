@@ -57,7 +57,29 @@ class CalculatorTest {
     void testTan() {
         double num = 60.0;
         assertEquals(Math.tan(num), classUnderTest.calcScience(Calculator.singleOperator.tan, num));
-    }    
+    }
+    
+    @DisplayName("Tests the Arctangent function in degrees")
+    @Test
+    void testATan() {
+        double num = 5.0;
+        assertEquals(Math.atan(num), classUnderTest.calcScience(Calculator.singleOperator.ATan, num));
+    }
+
+    @DisplayName("Tests the sine function in degrees")
+    @Test
+    void testASin() {
+        double num = 1.0;
+        assertEquals(Math.asin(num), classUnderTest.calcScience(Calculator.singleOperator.ASin, num));
+    }
+
+    @DisplayName("Tests the cosine function in degrees")
+    @Test
+    void testACos() {
+        double num = 1.0;
+        assertEquals(Math.acos(num), classUnderTest.calcScience(Calculator.singleOperator.ACos, num));
+    }
+    
     @DisplayName("Testing adding")
     @Test
     void addition(){
