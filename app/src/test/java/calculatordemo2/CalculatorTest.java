@@ -61,7 +61,7 @@ class CalculatorTest {
 
     @DisplayName("Testing adding")
     @Test
-      void addition(){
+    void addition(){
         unitTest.twoOpCaller(Calculator.twoOperator.add,5.0);
         double answer = unitTest.twoOpCaller(Calculator.twoOperator.normal,3.0);
         assertEquals(8.0, answer);
@@ -76,28 +76,28 @@ class CalculatorTest {
     // }
     @DisplayName("Testing subtract")
     @Test
-      void subtract(){
+    void subtract(){
         unitTest.twoOpCaller(Calculator.twoOperator.subtract,5.0);
         double answer = unitTest.twoOpCaller(Calculator.twoOperator.normal,3.0);
         assertEquals(2.0, answer);
     }
     @DisplayName("Testing mul")
     @Test
-      void mul(){
+    void mul(){
         unitTest.twoOpCaller(Calculator.twoOperator.multiply,5.0);
         double answer = unitTest.twoOpCaller(Calculator.twoOperator.normal,3.0);
         assertEquals(15.0, answer);
     }
     @DisplayName("Testing div")
     @Test
-      void div(){
+    void div(){
         unitTest.twoOpCaller(Calculator.twoOperator.divide,20.0);
         double answer = unitTest.twoOpCaller(Calculator.twoOperator.normal,5.0);
         assertEquals(4.0, answer);
     }
     @DisplayName("Testing multest1")
     @Test
-      void multest1(){
+    void multest1(){
         unitTest.twoOpCaller(Calculator.twoOperator.multiply,10.0);
         double answer = unitTest.twoOpCaller(Calculator.twoOperator.divide,5.0);
         answer = unitTest.twoOpCaller(Calculator.twoOperator.normal,5.0);
@@ -105,7 +105,7 @@ class CalculatorTest {
     }
     @DisplayName("Testing multest2")
     @Test
-      void multest2(){
+    void multest2(){
         unitTest.twoOpCaller(Calculator.twoOperator.add,20.0);
         double answer = unitTest.twoOpCaller(Calculator.twoOperator.divide,40.0);
         answer = unitTest.twoOpCaller(Calculator.twoOperator.normal,20.0);
@@ -113,7 +113,7 @@ class CalculatorTest {
     }
     @DisplayName("Testing multest3")
     @Test
-      void multest3(){
+    void multest3(){
         unitTest.twoOpCaller(Calculator.twoOperator.add,20.0);
         double answer = unitTest.twoOpCaller(Calculator.twoOperator.divide,5.0);
         answer = unitTest.twoOpCaller(Calculator.twoOperator.add,5.0);
@@ -122,7 +122,22 @@ class CalculatorTest {
         assertEquals(15.0, answer);
     }
 
-   
+    @DisplayName("first test for op")
+    @Test
+    void testop(){
+        unitTest.twoOpCaller(Calculator.twoOperator.subtract, 20.0);
+        double answer = unitTest.twoOpCaller(Calculator.twoOperator.normal, 15.0);
+        assertEquals(5.0, answer);
+    }
+    
+
+    @DisplayName("second test for op")
+    @Test
+    void testop2(){
+        unitTest.twoOpCaller(Calculator.twoOperator.add, 20.0);
+        double answer = unitTest.twoOpCaller(Calculator.twoOperator.normal, 15.0);
+        assertEquals(35.0, answer);
+    }
 
     @DisplayName("Tests whether an error is thrown if a null mode is passed")
     @Test
