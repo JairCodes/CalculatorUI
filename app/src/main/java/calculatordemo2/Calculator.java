@@ -1,5 +1,7 @@
 package calculatordemo2;
 
+
+
 /**
  * This class takes care of the brains of the calculator by enumerating the
  * actions, and using a constructor that returns the appropriately enumerated command,
@@ -25,7 +27,7 @@ public class Calculator{
 	 * The final call in enumeration that returns the specificed operation result
 	 * @return returns the called operation's result
 	 */
-	private Double twoOpOperations() {
+	public Double twoOpOperations() {
 		if (mode == twoOperator.normal) {
 			return num2;
 		}
@@ -44,6 +46,7 @@ public class Calculator{
 		// never reach
 		throw new Error(); 
 	}
+	
 
 	/**
 	 * Handles = operand, and calls Primitives if not = operand, updates the number parameters and returns as necessary
