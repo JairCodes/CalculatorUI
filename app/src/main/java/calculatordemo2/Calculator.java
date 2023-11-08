@@ -17,10 +17,10 @@ public class Calculator{
 	}
 
 	public enum singleOperator {
-		square, squareRoot, oneDevidedBy, cos, sin, tan
+		square, squareRoot, oneDevidedBy, cos, sin, tan, ATan,ASin,ACos;
 	}
 
-	private Double num1, num2;
+	public Double num1, num2;
 	private twoOperator mode = twoOperator.normal;
 
 	/**
@@ -115,6 +115,15 @@ public class Calculator{
 		}
 		if (newMode == singleOperator.tan) {
 			return Math.tan(num);
+		}
+		if(newMode == singleOperator.ATan){
+			return Math.atan(num);
+		}
+		if(newMode == singleOperator.ASin){
+			return Math.asin(num);
+		}
+		if(newMode == singleOperator.ACos){
+			return Math.acos(num);
 		}
 		// never reach
 		throw new Error();

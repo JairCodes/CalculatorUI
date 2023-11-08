@@ -20,7 +20,7 @@ public class CalculatorUI implements ActionListener {
 	private final JFrame frame;
 	private final JPanel panel;
 	private final JTextArea text;
-	private final JButton jButtons[], add, sub, mult, div, equal, cancel, sqrRt, sqr, inverse, cos, sin, tan;
+	private final JButton jButtons[], add, sub, mult, div, equal, cancel, sqrRt, sqr, inverse, cos, sin, tan,ATan,ASin,ACos;
 	private final String[] buttonValue = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 	private final Calculator calc;
 
@@ -49,6 +49,9 @@ public class CalculatorUI implements ActionListener {
 		cos = new JButton("Cos");
 		sin = new JButton("Sin");
 		tan = new JButton("Tan");
+		ATan = new JButton("ATan");
+		ASin = new JButton("ASin");
+		ACos = new JButton("ACos");
 		cancel = new JButton("C");
 
 		calc = new Calculator();
@@ -78,6 +81,9 @@ public class CalculatorUI implements ActionListener {
 		panel.add(cos);
 		panel.add(sin);
 		panel.add(tan);
+		panel.add(ATan);
+		panel.add(ASin);
+		panel.add(ACos);
 		panel.add(equal);
 		panel.add(cancel);
 		// add event listeners
@@ -91,6 +97,9 @@ public class CalculatorUI implements ActionListener {
 		cos.addActionListener(this);
 		sin.addActionListener(this);
 		tan.addActionListener(this);
+		ATan.addActionListener(this);
+		ASin.addActionListener(this);
+		ACos.addActionListener(this);
 		equal.addActionListener(this);
 		cancel.addActionListener(this);
 
@@ -147,6 +156,18 @@ public class CalculatorUI implements ActionListener {
 
 		if (source == tan) {
 			writer(calc.calcScience(Calculator.singleOperator.tan,
+					reader()));
+		}
+		if (source == ATan) {
+			writer(calc.calcScience(Calculator.singleOperator.ATan,
+					reader()));
+		}
+		if (source == ASin) {
+			writer(calc.calcScience(Calculator.singleOperator.ASin,
+					reader()));
+		}
+		if (source == ACos) {
+			writer(calc.calcScience(Calculator.singleOperator.ACos,
 					reader()));
 		}
 		if (source == equal) {

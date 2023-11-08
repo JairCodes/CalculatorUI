@@ -57,14 +57,16 @@ class CalculatorTest {
     void testTan() {
         double num = 60.0;
         assertEquals(Math.tan(num), classUnderTest.calcScience(Calculator.singleOperator.tan, num));
-    }
-
+    }    
     @DisplayName("Testing adding")
     @Test
     void addition(){
-        unitTest.twoOpCaller(Calculator.twoOperator.add,5.0);
-        double answer = unitTest.twoOpCaller(Calculator.twoOperator.normal,3.0);
-        assertEquals(8.0, answer);
+        double answer = unitTest.twoOpOperations();
+        unitTest.twoOpCaller(Calculator.twoOperator.add,6.0);
+        unitTest.twoOpCaller(Calculator.twoOperator.normal,3.0);
+        unitTest.twoOpOperations();
+         
+        assertEquals(8.0, unitTest.twoOpOperations());
     }
 
     //  @DisplayName("Testing normal")
