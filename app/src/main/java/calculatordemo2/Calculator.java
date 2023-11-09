@@ -21,7 +21,7 @@ public class Calculator{
 	}
 
 	public Double num1, num2;
-	private twoOperator mode = twoOperator.normal;
+	public twoOperator mode = twoOperator.normal;
 
 	/**
 	 * The final call in enumeration that returns the specificed operation result
