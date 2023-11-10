@@ -3,7 +3,6 @@
  */
 package calculatordemo2;
 
-import javax.swing.JTextArea;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -15,7 +14,8 @@ import java.lang.reflect.Field;  // This brings in the Field feature of Java Ref
 class CalculatorUITest {
 
     private static CalculatorUI classUnderTest;
-    private JTextArea textArea;
+    JTextArea textArea = new JTextArea();
+    ButtonFactory button = new ButtonFactory();
 
     @BeforeAll
     public static void setUp() {
@@ -36,6 +36,27 @@ class CalculatorUITest {
         // Test that the value of “text” is “mytext”
         assertEquals("mytext", text.getText());
     }
+
+    @Test
+    void test1num() {
+        button.createNumericButton(5, textArea).doClick();
+        assertEquals("5", textArea.getText());
+    }
+    @Test
+    void test2num() {
+        button.createNumericButton(3, textArea).doClick();
+        button.createNumericButton(5, textArea).doClick();
+        assertEquals("35", textArea.getText());
+    }
+
+    @Test
+    void testCreatePrimitiveOperatorButtonAction() {
+        Calculator calculator = new Calculator();
+        button.createPrimitiveOperatorButton("+", textArea, calculator).doClick();
+        assertEquals(" + ", textArea.getText());
+    }
+    
+    
   
     @Test 
     void appPanelIsCreated() {

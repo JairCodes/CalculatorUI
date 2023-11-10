@@ -144,7 +144,7 @@ public class ButtonFactory {
                     result = calculator.calcScience(Calculator.singleOperator.ACos, Double.parseDouble(textArea.getText()));
                     break;
                 case "C":
-                    result = calculator.reset();
+                    textArea.setText("");
                     break;
                 // Add additional cases for other trigonometric functions if needed
                 default:

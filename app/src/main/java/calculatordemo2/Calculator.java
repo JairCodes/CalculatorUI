@@ -1,7 +1,5 @@
 package calculatordemo2;
 
-
-
 /**
  * This class takes care of the brains of the calculator by enumerating the
  * actions, and using a constructor that returns the appropriately enumerated command,
@@ -88,7 +86,7 @@ public class Calculator{
 		num1 = 0.0;
 		mode = twoOperator.normal;
 
-		return null;
+		return Double.NaN;
 	}
 
 	/**
