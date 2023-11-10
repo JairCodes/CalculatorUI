@@ -2,12 +2,14 @@ package calculatordemo2;
 // PanelFactory.java
 
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 
 import javax.swing.*;
 
 public class PanelFactory {
     public JPanel createPanel() {
-        return new JPanel();
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+        return panel;
     }
     public JPanel createPanelForNumericButtons(ButtonFactory buttonFactory, JTextArea textArea) {
         JPanel panel = createPanel();

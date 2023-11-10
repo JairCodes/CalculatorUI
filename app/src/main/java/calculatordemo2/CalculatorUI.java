@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import javax.swing.JTextArea;
 import javax.swing.JPanel;
+import javax.swing.BorderFactory;
+import java.awt.Insets;
 
 public class CalculatorUI{
     public final JFrame frame;
@@ -25,11 +27,11 @@ public class CalculatorUI{
     }
     
     public void init() {
-        frame.setSize(400, 300);
+        frame.setSize(465, 370);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         // JPanel panel = new JPanel(new GridLayout(6, 2));//0,1
-        JPanel panel = new JPanel(new GridLayout(0, 1));//0,1
+        JPanel panel = new JPanel(new GridLayout(0, 1,0,0));//0,1
         JPanel numericButtonsPanel = panelFactory.createPanelForNumericButtons(buttonFactory, textArea);
         JPanel primitiveOperatorsPanel = panelFactory.createPrimitiveOperatorsPanel(buttonFactory, textArea, calculator);
         JPanel trigOperatorsPanel = panelFactory.createTrigonometricOperatorsPanel(buttonFactory, textArea, calculator);
