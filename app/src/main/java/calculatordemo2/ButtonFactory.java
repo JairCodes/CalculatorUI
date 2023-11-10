@@ -79,6 +79,9 @@ public class ButtonFactory {
                 case "/":
                     result = calculator.twoOpCaller(Calculator.twoOperator.divide, Double.parseDouble(textArea.getText()));
                     break;
+                case "=":
+                    result = calculator.twoOpOperations();
+                break;
                 // Add more cases for other arithmetic operations if needed
                 default:
                     break;
@@ -131,6 +134,18 @@ public class ButtonFactory {
                 case "Tan":
                     result = calculator.calcScience(Calculator.singleOperator.tan, Double.parseDouble(textArea.getText()));
                     break;
+                case "ATan":
+                    result = calculator.calcScience(Calculator.singleOperator.ATan, Double.parseDouble(textArea.getText()));
+                    break;
+                case "ASin":
+                    result = calculator.calcScience(Calculator.singleOperator.ASin, Double.parseDouble(textArea.getText()));
+                    break;
+                case "ACos":
+                    result = calculator.calcScience(Calculator.singleOperator.ACos, Double.parseDouble(textArea.getText()));
+                    break;
+                case "C":
+                    result = calculator.reset();
+                    break;
                 // Add additional cases for other trigonometric functions if needed
                 default:
                     break;
@@ -138,6 +153,8 @@ public class ButtonFactory {
 
             if (result != null) {
                 textArea.setText(String.valueOf(result));
+            }else{
+                textArea.setText("");
             }
         });
         return button;
@@ -150,6 +167,7 @@ public class ButtonFactory {
         primitiveOperatorButtons[2] = createOperatorButton("*", textArea, calculator);
         primitiveOperatorButtons[3] = createOperatorButton("/", textArea, calculator);
         primitiveOperatorButtons[4] = createOperatorButton("=", textArea, calculator);
+        
         for (JButton button : primitiveOperatorButtons) {
             button.setForeground(Color.pink);
             button.setBackground(Color.BLACK); 
@@ -159,13 +177,14 @@ public class ButtonFactory {
     }
 
     public JButton[] createTrigonometricOperatorButtons(JTextArea textArea, Calculator calculator) {
-        JButton[] trigonometricOperatorButtons = new JButton[3];
+        JButton[] trigonometricOperatorButtons = new JButton[7];
         trigonometricOperatorButtons[0] = createTrigonometricOperatorButton("Sin", textArea, calculator);
         trigonometricOperatorButtons[1] = createTrigonometricOperatorButton("Cos", textArea, calculator);
         trigonometricOperatorButtons[2] = createTrigonometricOperatorButton("Tan", textArea, calculator);
-        trigonometricOperatorButtons[3] = createTrigonometricOperatorButton("ATan");
-        trigonometricOperatorButtons[4] = createTrigonometricOperatorButton("Asin");
-        trigonometricOperatorButtons[5] = createTrigonometricOperatorButton("ACos");
+        trigonometricOperatorButtons[3] = createTrigonometricOperatorButton("ATan", textArea, calculator);
+        trigonometricOperatorButtons[4] = createTrigonometricOperatorButton("Asin", textArea, calculator);
+        trigonometricOperatorButtons[5] = createTrigonometricOperatorButton("ACos", textArea, calculator);
+        trigonometricOperatorButtons[6] = createTrigonometricOperatorButton("C", textArea, calculator);
 
         for (JButton button : trigonometricOperatorButtons) {
             button.setForeground(Color.pink);

@@ -22,6 +22,7 @@ public class PanelFactory {
         JPanel panel = createPanel();
         JButton[] primitiveOperatorButtons = buttonFactory.createPrimitiveOperatorButtons(textArea, calculator);
         // panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
         for (JButton button : primitiveOperatorButtons) {
             panel.add(button);
 

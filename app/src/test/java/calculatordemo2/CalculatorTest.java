@@ -10,12 +10,14 @@ class CalculatorTest {
     private static Calculator classUnderTest;
     private static Calculator unitTest;
     private static Calculator unitTestop;
+    private static Calculator unit8test;
 
     @BeforeAll
     public static void setUp() {
         classUnderTest = new Calculator();
         unitTest = new Calculator();
         unitTestop = new Calculator();
+        unit8test = new Calculator();
     }
 
     @DisplayName("Tests the square function")
@@ -166,9 +168,7 @@ class CalculatorTest {
 
         assertEquals(1268.2, unitTest.twoOpOperations());
     }
-
     
-
     @DisplayName("first test for op")
     @Test
     void testop(){

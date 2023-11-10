@@ -10,6 +10,7 @@ package calculatordemo2;
  * Additional math functions can easily be added here. 
  * @author Soria, Steckler, Tesic, Metsis
  */
+
 public class Calculator{
 
 	public enum twoOperator {
@@ -87,7 +88,7 @@ public class Calculator{
 		num1 = 0.0;
 		mode = twoOperator.normal;
 
-		return Double.NaN;
+		return null;
 	}
 
 	/**
@@ -126,6 +127,7 @@ public class Calculator{
 			return Math.acos(num);
 		}
 		// never reach
+		
 		throw new Error();
 	}
 
