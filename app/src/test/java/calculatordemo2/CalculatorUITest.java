@@ -102,6 +102,20 @@ class CalculatorUITest {
         button.createTrigonometricOperatorButton("ASin", textArea, classUnderTest.calculator).doClick();
         assertEquals(String.valueOf(Math.asin(Math.asin(30))), textArea.getText());
     }
+
+    @DisplayName("writer unit test")
+    @Test
+    public void writertest(){
+        classUnderTest.writer(5.0);
+        assertEquals("5.0", classUnderTest.textArea.getText());
+    }
+    @DisplayName("reader unit test")
+    @Test
+    public void readertest(){
+        classUnderTest.textArea.setText("10.5");
+        Double anwer = classUnderTest.reader();
+        assertEquals(10.5, anwer);
+    }
     
   
     @Test 
