@@ -15,9 +15,9 @@ public class PanelFactory {
         return panel;
     }
 
-    public JPanel createPrimitiveOperatorsPanel(ButtonFactory buttonFactory) {
+    public JPanel createPrimitiveOperatorsPanel(ButtonFactory buttonFactory, JTextArea textArea, Calculator calculator) {
         JPanel panel = createPanel();
-        JButton[] primitiveOperatorButtons = buttonFactory.createPrimitiveOperatorButtons();
+        JButton[] primitiveOperatorButtons = buttonFactory.createPrimitiveOperatorButtons(textArea, calculator);
         for (JButton button : primitiveOperatorButtons) {
             panel.add(button);
         }
@@ -25,18 +25,18 @@ public class PanelFactory {
     }
 
 
-    public JPanel createTrigonometricOperatorsPanel(ButtonFactory buttonFactory) {
+    public JPanel createTrigonometricOperatorsPanel(ButtonFactory buttonFactory, JTextArea textArea, Calculator calculator) {
         JPanel panel = createPanel();
-        JButton[] trigonometricOperatorButtons = buttonFactory.createTrigonometricOperatorButtons();
+        JButton[] trigonometricOperatorButtons = buttonFactory.createTrigonometricOperatorButtons(textArea, calculator);
         for (JButton button : trigonometricOperatorButtons) {
             panel.add(button);
         }
         return panel;
     }
 
-    public JPanel createCommonFunctionOperatorsPanel(ButtonFactory buttonFactory) {
+    public JPanel createCommonFunctionOperatorsPanel(ButtonFactory buttonFactory, JTextArea textArea, Calculator calculator) {
         JPanel panel = createPanel();
-        JButton[] commonFunctionOperatorButtons = buttonFactory.createCommonFunctionOperatorButtons();
+        JButton[] commonFunctionOperatorButtons = buttonFactory.createCommonFunctionOperatorButtons(textArea, calculator);
         for (JButton button : commonFunctionOperatorButtons) {
             panel.add(button);
         }
