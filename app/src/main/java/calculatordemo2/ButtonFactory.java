@@ -76,6 +76,7 @@ public class ButtonFactory {
                 textArea.setText(""); // Clear the text for operators other than "="
             }
         });
+        //dadwadw
     
         return button;
     }
