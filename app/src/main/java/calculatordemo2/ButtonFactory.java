@@ -2,21 +2,35 @@ package calculatordemo2;
 //ButtonFactory
 import javax.swing.JButton;
 import javax.swing.JTextArea;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+
+// ButtonFactory.java
+import javax.swing.*;
 
 public class ButtonFactory {
+    
     public JButton createNumericButton(int value, JTextArea textArea) {
         JButton button = new JButton(String.valueOf(value));
         button.addActionListener(e -> {
             textArea.append(String.valueOf(value)); // Append the value to the text area
         });
         return button;
-    }
-
+        
+    }    
     public JButton[] createNumericButtons(JTextArea textArea) {
+
         JButton[] numericButtons = new JButton[10];
         for (int i = 0; i < 10; i++) {
             numericButtons[i] = createNumericButton(i, textArea);
+            numericButtons[i].setBackground(Color.pink);
+            numericButtons[i].setForeground(Color.black);
+            numericButtons[i].setPreferredSize(new Dimension(50,25));
+
+
         }
+        numericButtons[0].setPreferredSize(new Dimension(150,25));
         return numericButtons;
     }
 
@@ -124,6 +138,18 @@ public class ButtonFactory {
                 case "Tan":
                     result = calculator.calcScience(Calculator.singleOperator.tan, Double.parseDouble(textArea.getText()));
                     break;
+                case "ATan":
+                    result = calculator.calcScience(Calculator.singleOperator.ATan, Double.parseDouble(textArea.getText()));
+                    break;
+                case "ASin":
+                    result = calculator.calcScience(Calculator.singleOperator.ASin, Double.parseDouble(textArea.getText()));
+                    break;
+                case "ACos":
+                    result = calculator.calcScience(Calculator.singleOperator.ACos, Double.parseDouble(textArea.getText()));
+                    break;
+                case "C":
+                    result = calculator.reset();
+                    break;
                 // Add additional cases for other trigonometric functions if needed
                 default:
                     break;
@@ -131,6 +157,8 @@ public class ButtonFactory {
 
             if (result != null) {
                 textArea.setText(String.valueOf(result));
+            }else{
+                textArea.setText("");
             }
         });
         return button;
@@ -138,19 +166,29 @@ public class ButtonFactory {
 
     public JButton[] createPrimitiveOperatorButtons(JTextArea textArea, Calculator calculator) {
         JButton[] primitiveOperatorButtons = new JButton[5];
-        primitiveOperatorButtons[0] = createPrimitiveOperatorButton("+", textArea, calculator);
-        primitiveOperatorButtons[1] = createPrimitiveOperatorButton("-", textArea, calculator);
-        primitiveOperatorButtons[2] = createPrimitiveOperatorButton("*", textArea, calculator);
-        primitiveOperatorButtons[3] = createPrimitiveOperatorButton("/", textArea, calculator);
-        primitiveOperatorButtons[4] = createPrimitiveOperatorButton("=", textArea, calculator);
+        for (JButton button : primitiveOperatorButtons) {
+            button.setForeground(Color.pink);
+            button.setBackground(Color.BLACK); 
+            button.setPreferredSize(new Dimension(50,25));  
+        }
         return primitiveOperatorButtons;
     }
 
     public JButton[] createTrigonometricOperatorButtons(JTextArea textArea, Calculator calculator) {
-        JButton[] trigonometricOperatorButtons = new JButton[3];
+        JButton[] trigonometricOperatorButtons = new JButton[7];
         trigonometricOperatorButtons[0] = createTrigonometricOperatorButton("Sin", textArea, calculator);
         trigonometricOperatorButtons[1] = createTrigonometricOperatorButton("Cos", textArea, calculator);
         trigonometricOperatorButtons[2] = createTrigonometricOperatorButton("Tan", textArea, calculator);
+        trigonometricOperatorButtons[3] = createTrigonometricOperatorButton("ATan", textArea, calculator);
+        trigonometricOperatorButtons[4] = createTrigonometricOperatorButton("Asin", textArea, calculator);
+        trigonometricOperatorButtons[5] = createTrigonometricOperatorButton("ACos", textArea, calculator);
+        trigonometricOperatorButtons[6] = createTrigonometricOperatorButton("C", textArea, calculator);
+
+        for (JButton button : trigonometricOperatorButtons) {
+            button.setForeground(Color.pink);
+            button.setBackground(Color.BLACK);
+            button.setPreferredSize(new Dimension(70,25));
+        }
         return trigonometricOperatorButtons;
     }
 
@@ -159,6 +197,11 @@ public class ButtonFactory {
         commonFunctionOperatorButtons[0] = createCommonFunctionOperatorButton("√", textArea, calculator);
         commonFunctionOperatorButtons[1] = createCommonFunctionOperatorButton("x^2", textArea, calculator);
         commonFunctionOperatorButtons[2] = createCommonFunctionOperatorButton("1/x", textArea, calculator);
+        for (JButton button : commonFunctionOperatorButtons) {
+            button.setForeground(Color.pink);
+            button.setBackground(Color.BLACK);
+            button.setPreferredSize(new Dimension(70,25));
+        }
         return commonFunctionOperatorButtons;
     }
 }

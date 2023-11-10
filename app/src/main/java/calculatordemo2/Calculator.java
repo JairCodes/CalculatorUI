@@ -1,5 +1,7 @@
 package calculatordemo2;
 
+
+
 /**
  * This class takes care of the brains of the calculator by enumerating the
  * actions, and using a constructor that returns the appropriately enumerated command,
@@ -8,6 +10,7 @@ package calculatordemo2;
  * Additional math functions can easily be added here. 
  * @author Soria, Steckler, Tesic, Metsis
  */
+
 public class Calculator{
 
 	public enum twoOperator {
@@ -15,7 +18,7 @@ public class Calculator{
 	}
 
 	public enum singleOperator {
-		square, squareRoot, oneDevidedBy, cos, sin, tan
+		square, squareRoot, oneDevidedBy, cos, sin, tan, ATan,ASin,ACos;
 	}
 
 	public Double num1, num2;
@@ -44,6 +47,7 @@ public class Calculator{
 		// never reach
 		throw new Error(); 
 	}
+	
 
 	/**
 	 * Handles = operand, and calls Primitives if not = operand, updates the number parameters and returns as necessary
@@ -84,7 +88,7 @@ public class Calculator{
 		num1 = 0.0;
 		mode = twoOperator.normal;
 
-		return Double.NaN;
+		return null;
 	}
 
 	/**
@@ -113,7 +117,17 @@ public class Calculator{
 		if (newMode == singleOperator.tan) {
 			return Math.tan(num);
 		}
+		if(newMode == singleOperator.ATan){
+			return Math.atan(num);
+		}
+		if(newMode == singleOperator.ASin){
+			return Math.asin(num);
+		}
+		if(newMode == singleOperator.ACos){
+			return Math.acos(num);
+		}
 		// never reach
+		
 		throw new Error();
 	}
 

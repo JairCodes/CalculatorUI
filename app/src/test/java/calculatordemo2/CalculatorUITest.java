@@ -8,15 +8,19 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import static org.junit.jupiter.api.Assertions.*;
+import javax.swing.*;
+
 import java.lang.reflect.Field;  // This brings in the Field feature of Java Reflection
 
 class CalculatorUITest {
 
     private static CalculatorUI classUnderTest;
+    private JTextArea textArea;
 
     @BeforeAll
     public static void setUp() {
         classUnderTest = new CalculatorUI();
+        
     }
 
     @DisplayName("Testing that writer writes the display")
@@ -32,7 +36,7 @@ class CalculatorUITest {
         // Test that the value of “text” is “mytext”
         assertEquals("mytext", text.getText());
     }
-    
+  
     @Test 
     void appPanelIsCreated() {
         assertNotNull(classUnderTest, "app should have a panel object");
