@@ -8,8 +8,6 @@ import javax.swing.WindowConstants;
 import javax.swing.JTextArea;
 import javax.swing.JPanel;
 
-import javax.swing.*;
-
 public class CalculatorUI{
     public final JFrame frame;
     public final PanelFactory panelFactory;
@@ -48,6 +46,30 @@ public class CalculatorUI{
         frame.add(panel);
         frame.setVisible(true);
     }
+
+    /**
+     * Helper function to read a number from the text area
+     * @return The parsed number
+     */
+    public Double reader() {
+        Double num;
+        String str = textArea.getText();
+        num = Double.valueOf(str);
+        return num;
+    }
+
+    /**
+     * Helper function that sets the text area with the number, and avoids NaN issues
+     * @param num The number to be displayed
+     */
+	public void writer(final Double num) {
+		if (Double.isNaN(num)) {
+			textArea.setText("");
+		} else {
+			textArea.setText(Double.toString(num));
+		}
+	}
+	
 
     public void updateTextArea(Double result) {
         if (!Double.isNaN(result)) {
