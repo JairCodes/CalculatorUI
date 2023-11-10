@@ -88,7 +88,7 @@ public class Calculator{
 		num1 = 0.0;
 		mode = twoOperator.normal;
 
-		return null;
+		return Double.NaN;
 	}
 
 	/**

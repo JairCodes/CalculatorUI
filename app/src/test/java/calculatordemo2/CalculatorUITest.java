@@ -28,7 +28,7 @@ class CalculatorUITest {
     public void writerSetText() throws Exception {
         // Use reflection to access the private field “text”
         Class cls = classUnderTest.getClass();
-        Field field = cls.getDeclaredField("text");
+        Field field = cls.getDeclaredField("textArea");
         field.setAccessible(true);
         // Set the value of “text” to “mytext”
         JTextArea text = (JTextArea) field.get(classUnderTest);
