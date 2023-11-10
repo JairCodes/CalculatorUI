@@ -28,20 +28,24 @@ public class CalculatorUI{
         frame.setSize(400, 300);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel(new GridLayout(0, 1));
-        // JPanel panel = panelFactory.createPanel();
+        // JPanel panel = new JPanel(new GridLayout(6, 2));//0,1
+        JPanel panel = new JPanel(new GridLayout(0, 1));//0,1
         JPanel numericButtonsPanel = panelFactory.createPanelForNumericButtons(buttonFactory, textArea);
         JPanel primitiveOperatorsPanel = panelFactory.createPrimitiveOperatorsPanel(buttonFactory, textArea, calculator);
         JPanel trigOperatorsPanel = panelFactory.createTrigonometricOperatorsPanel(buttonFactory, textArea, calculator);
         JPanel commonFunctionOperatorsPanel = panelFactory.createCommonFunctionOperatorsPanel(buttonFactory, textArea, calculator);
-	    panel.setBackground(Color.darkGray.darker());
+        JPanel createC = panelFactory.createC(buttonFactory, textArea, calculator);
+	    
 
         panel.add(textArea);
         panel.add(primitiveOperatorsPanel);
         panel.add(trigOperatorsPanel);
+        // panel.add(primitiveOperatorsPanel);col 2
         panel.add(commonFunctionOperatorsPanel);
+        panel.add(createC);
         panel.add(numericButtonsPanel);
 
+        panel.setBackground(Color.darkGray.darker());
 
         frame.add(panel);
         frame.setVisible(true);

@@ -4,20 +4,16 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.checkerframework.checker.units.qual.C;
-
 class CalculatorTest {
     private static Calculator classUnderTest;
     private static Calculator unitTest;
     private static Calculator unitTestop;
-    private static Calculator unit8test;
 
     @BeforeAll
     public static void setUp() {
         classUnderTest = new Calculator();
         unitTest = new Calculator();
         unitTestop = new Calculator();
-        unit8test = new Calculator();
     }
 
     @DisplayName("Tests the square function")
@@ -185,6 +181,7 @@ class CalculatorTest {
         double answer = unitTestop.twoOpCaller(Calculator.twoOperator.normal, 5.0);
         assertEquals(50.0, answer);
     }
+
 
     @DisplayName("Tests whether an error is thrown if a null mode is passed")
     @Test
