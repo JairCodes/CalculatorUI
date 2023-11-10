@@ -20,22 +20,6 @@ public class ButtonFactory {
         return numericButtons;
     }
 
-    public JButton createOperatorButton(String label, JTextArea textArea, Calculator calculator) {
-        JButton button = new JButton(label);
-        button.addActionListener(e -> {
-            String currentText = textArea.getText();
-
-            if (label.equals("=")) {
-                Double result = calculator.calculateEqual(Double.valueOf(currentText));
-                textArea.setText(String.valueOf(result));
-            } else {
-                currentText += " " + label + " ";
-                textArea.setText(currentText);
-            }
-        });
-        return button;
-    }
-
     public JButton createNumericButton(int value, JTextArea textArea, Calculator calculator) {
         JButton button = new JButton(String.valueOf(value));
         button.addActionListener(e -> {
@@ -46,36 +30,58 @@ public class ButtonFactory {
         });
         return button;
     }
-    
+    public static Calculator.twoOperator getOperator(String label) {
+        switch (label) {
+            case "+":
+                return Calculator.twoOperator.add;
+            case "-":
+                return Calculator.twoOperator.subtract;
+            case "*":
+                return Calculator.twoOperator.multiply;
+            case "/":
+                return Calculator.twoOperator.divide;
+            default:
+                throw new IllegalArgumentException("Invalid operator label: " + label);
+        }
+    }
     public JButton createPrimitiveOperatorButton(String label, JTextArea textArea, Calculator calculator) {
         JButton button = new JButton(label);
         button.addActionListener(e -> {
-            Double result = null;
+            String currentText = textArea.getText();
+            double result = Double.parseDouble(currentText); // Set initial result as the entered number
     
             switch (label) {
                 case "+":
-                    result = calculator.twoOpCaller(Calculator.twoOperator.add, Double.parseDouble(textArea.getText()));
+                    calculator.twoOpCaller(Calculator.twoOperator.add, result);
                     break;
                 case "-":
-                    result = calculator.twoOpCaller(Calculator.twoOperator.subtract, Double.parseDouble(textArea.getText()));
+                    calculator.twoOpCaller(Calculator.twoOperator.subtract, result);
                     break;
                 case "*":
-                    result = calculator.twoOpCaller(Calculator.twoOperator.multiply, Double.parseDouble(textArea.getText()));
+                    calculator.twoOpCaller(Calculator.twoOperator.multiply, result);
                     break;
                 case "/":
-                    result = calculator.twoOpCaller(Calculator.twoOperator.divide, Double.parseDouble(textArea.getText()));
+                    calculator.twoOpCaller(Calculator.twoOperator.divide, result);
                     break;
-                // Add more cases for other arithmetic operations if needed
+                case "=":
+                    result = calculator.calculateEqual(result);
+                    break;
                 default:
                     break;
             }
     
-            if (result != null) {
-                textArea.setText(String.valueOf(result));
+            if (label.equals("=")) {
+                textArea.setText(String.valueOf(result)); // Display the result
+            } else {
+                textArea.setText(""); // Clear the text for operators other than "="
             }
         });
+    
         return button;
     }
+    
+    
+    
 
     public JButton createCommonFunctionOperatorButton(String label, JTextArea textArea, Calculator calculator) {
         JButton button = new JButton(label);
@@ -131,11 +137,11 @@ public class ButtonFactory {
 
     public JButton[] createPrimitiveOperatorButtons(JTextArea textArea, Calculator calculator) {
         JButton[] primitiveOperatorButtons = new JButton[5];
-        primitiveOperatorButtons[0] = createOperatorButton("+", textArea, calculator);
-        primitiveOperatorButtons[1] = createOperatorButton("-", textArea, calculator);
-        primitiveOperatorButtons[2] = createOperatorButton("*", textArea, calculator);
-        primitiveOperatorButtons[3] = createOperatorButton("/", textArea, calculator);
-        primitiveOperatorButtons[4] = createOperatorButton("=", textArea, calculator);
+        primitiveOperatorButtons[0] = createPrimitiveOperatorButton("+", textArea, calculator);
+        primitiveOperatorButtons[1] = createPrimitiveOperatorButton("-", textArea, calculator);
+        primitiveOperatorButtons[2] = createPrimitiveOperatorButton("*", textArea, calculator);
+        primitiveOperatorButtons[3] = createPrimitiveOperatorButton("/", textArea, calculator);
+        primitiveOperatorButtons[4] = createPrimitiveOperatorButton("=", textArea, calculator);
         return primitiveOperatorButtons;
     }
 
