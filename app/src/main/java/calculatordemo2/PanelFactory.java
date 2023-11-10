@@ -1,5 +1,8 @@
 package calculatordemo2;
 // PanelFactory.java
+
+import java.awt.Dimension;
+
 import javax.swing.*;
 
 public class PanelFactory {
@@ -9,8 +12,8 @@ public class PanelFactory {
     public JPanel createPanelForNumericButtons(ButtonFactory buttonFactory, JTextArea textArea) {
         JPanel panel = createPanel();
         JButton[] numericButtons = buttonFactory.createNumericButtons(textArea);
-        for (JButton button : numericButtons) {
-            panel.add(button);
+        for (int i = 9; i >= 0;i--){
+            panel.add(numericButtons[i]);
         }
         return panel;
     }
@@ -18,8 +21,10 @@ public class PanelFactory {
     public JPanel createPrimitiveOperatorsPanel(ButtonFactory buttonFactory) {
         JPanel panel = createPanel();
         JButton[] primitiveOperatorButtons = buttonFactory.createPrimitiveOperatorButtons();
+        // panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         for (JButton button : primitiveOperatorButtons) {
             panel.add(button);
+
         }
         return panel;
     }
@@ -41,6 +46,6 @@ public class PanelFactory {
             panel.add(button);
         }
         return panel;
-    }
+    }  
 }
 
