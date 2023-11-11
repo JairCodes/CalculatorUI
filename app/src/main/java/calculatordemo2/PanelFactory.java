@@ -1,7 +1,6 @@
 package calculatordemo2;
 // PanelFactory.java
 
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 import javax.swing.*;
@@ -23,7 +22,6 @@ public class PanelFactory {
     public JPanel createPrimitiveOperatorsPanel(ButtonFactory buttonFactory, JTextArea textArea, Calculator calculator) {
         JPanel panel = createPanel();
         JButton[] primitiveOperatorButtons = buttonFactory.createPrimitiveOperatorButtons(textArea, calculator);
-        // panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         for (JButton button : primitiveOperatorButtons) {
             panel.add(button);
 
@@ -35,7 +33,6 @@ public class PanelFactory {
     public JPanel createTrigonometricOperatorsPanel(ButtonFactory buttonFactory, JTextArea textArea, Calculator calculator) {
         JPanel panel = createPanel();
         JButton[] trigonometricOperatorButtons = buttonFactory.createTrigonometricOperatorButtons(textArea, calculator);
-        // panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         for (JButton button : trigonometricOperatorButtons) {
             panel.add(button);
         }

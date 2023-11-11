@@ -7,8 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import javax.swing.JTextArea;
 import javax.swing.JPanel;
-import javax.swing.BorderFactory;
-import java.awt.Insets;
 
 public class CalculatorUI{
     public final JFrame frame;

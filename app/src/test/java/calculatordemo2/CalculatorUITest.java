@@ -88,7 +88,6 @@ class CalculatorUITest {
         button.createNumericButton(500, textArea).doClick();
         button.createPrimitiveOperatorButton("*", textArea, classUnderTest.calculator).doClick();
         button.createNumericButton(5, textArea).doClick();
-        // button.createPrimitiveOperatorButton("=", textArea, classUnderTest.calculator).doClick();
         button.createPrimitiveOperatorButton("/", textArea, classUnderTest.calculator).doClick();
         button.createNumericButton(10, textArea).doClick();
         button.createPrimitiveOperatorButton("=", textArea, classUnderTest.calculator).doClick();

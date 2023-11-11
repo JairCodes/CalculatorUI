@@ -27,16 +27,6 @@ public class ButtonFactory {
         return numericButtons;
     }
 
-    public JButton createNumericButton(int value, JTextArea textArea, Calculator calculator) {
-        JButton button = new JButton(String.valueOf(value));
-        button.addActionListener(e -> {
-            textArea.append(String.valueOf(value)); // Append the value to the text area
-            double numericValue = Double.parseDouble(textArea.getText());
-            double result = calculator.calcScience(Calculator.singleOperator.squareRoot, numericValue);
-            textArea.setText(String.valueOf(result)); // Display the square root of the entered number
-        });
-        return button;
-    }
     public static Calculator.twoOperator getOperator(String label) {
         switch (label) {
             case "+":
@@ -83,14 +73,10 @@ public class ButtonFactory {
                 textArea.setText(""); // Clear the text for operators other than "="
             }
         });
-        //dadwadw
     
         return button;
     }
     
-    
-    
-
     public JButton createCommonFunctionOperatorButton(String label, JTextArea textArea, Calculator calculator) {
         JButton button = new JButton(label);
         button.addActionListener(e -> {
