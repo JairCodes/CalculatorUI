@@ -3,20 +3,24 @@
  */
 package calculatordemo2;
 
-import javax.swing.JTextArea;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import static org.junit.jupiter.api.Assertions.*;
+import javax.swing.*;
+
 import java.lang.reflect.Field;  // This brings in the Field feature of Java Reflection
 
 class CalculatorUITest {
 
     private static CalculatorUI classUnderTest;
+    JTextArea textArea = new JTextArea();
+    ButtonFactory button = new ButtonFactory();
 
     @BeforeAll
     public static void setUp() {
         classUnderTest = new CalculatorUI();
+        
     }
 
     @DisplayName("Testing that writer writes the display")
@@ -24,7 +28,7 @@ class CalculatorUITest {
     public void writerSetText() throws Exception {
         // Use reflection to access the private field “text”
         Class cls = classUnderTest.getClass();
-        Field field = cls.getDeclaredField("text");
+        Field field = cls.getDeclaredField("textArea");
         field.setAccessible(true);
         // Set the value of “text” to “mytext”
         JTextArea text = (JTextArea) field.get(classUnderTest);
@@ -32,7 +36,87 @@ class CalculatorUITest {
         // Test that the value of “text” is “mytext”
         assertEquals("mytext", text.getText());
     }
+    @DisplayName("checks to see if 5 is press")
+    @Test
+    void test1num() {
+        button.createNumericButton(5, textArea).doClick();
+        assertEquals("5", textArea.getText());
+    }
+    @DisplayName("checks to see if 3 then 5 is press")
+    @Test
+    void test2num() {
+        button.createNumericButton(3, textArea).doClick();
+        button.createNumericButton(5, textArea).doClick();
+        assertEquals("35", textArea.getText());
+    }
+
+    @Test
+    @DisplayName("checks to see 3+5and the equal sign works")
+    void test3num() {
+        button.createNumericButton(3, textArea).doClick();
+        button.createPrimitiveOperatorButton("+", textArea, classUnderTest.calculator).doClick();
+        button.createNumericButton(5, textArea).doClick();
+        button.createPrimitiveOperatorButton("=", textArea, classUnderTest.calculator).doClick();
+        assertEquals("8.0", textArea.getText());
+    }
+    @Test
+    @DisplayName("checks to see if sin is press")
+    void test4num() {
+        button.createNumericButton(30, textArea).doClick();
+        button.createTrigonometricOperatorButton("Sin", textArea, classUnderTest.calculator).doClick();
+        assertEquals(String.valueOf(Math.sin(30)), textArea.getText());
+    }
+    @Test
+    @DisplayName("checks to see if sin is check as before and then checks C clears")
+    void test5num() {
+        button.createNumericButton(30, textArea).doClick();
+        button.createTrigonometricOperatorButton("Sin", textArea, classUnderTest.calculator).doClick();
+        assertEquals(String.valueOf(Math.sin(30)), textArea.getText());
+        button.createPrimitiveOperatorButton("C", textArea, classUnderTest.calculator).doClick();
+        assertEquals("", textArea.getText());
+    }
+    @Test
+    @DisplayName("checks to see if 1/x is press")
+    void test6num() {
+        button.createNumericButton(4, textArea).doClick();
+        button.createCommonFunctionOperatorButton("1/x", textArea, classUnderTest.calculator).doClick();
+        assertEquals("0.25", textArea.getText());
+    }
+    @Test
+    @DisplayName("check to see if (500*5)/10 = is press ")
+    void test7num() {
+        button.createNumericButton(500, textArea).doClick();
+        button.createPrimitiveOperatorButton("*", textArea, classUnderTest.calculator).doClick();
+        button.createNumericButton(5, textArea).doClick();
+        button.createPrimitiveOperatorButton("/", textArea, classUnderTest.calculator).doClick();
+        button.createNumericButton(10, textArea).doClick();
+        button.createPrimitiveOperatorButton("=", textArea, classUnderTest.calculator).doClick();
+        assertEquals("250.0", textArea.getText());
+    }
+     @Test
+    @DisplayName("checks to see is Sin^-1 is press then press again")
+    void test8num() {
+        button.createNumericButton(4, textArea).doClick();
+        button.createTrigonometricOperatorButton("ASin", textArea, classUnderTest.calculator).doClick();
+        button.createTrigonometricOperatorButton("ASin", textArea, classUnderTest.calculator).doClick();
+        assertEquals(String.valueOf(Math.asin(Math.asin(30))), textArea.getText());
+    }
+
+    @DisplayName("writer unit test")
+    @Test
+    public void writertest(){
+        classUnderTest.writer(5.0);
+        assertEquals("5.0", classUnderTest.textArea.getText());
+    }
+    @DisplayName("reader unit test")
+    @Test
+    public void readertest(){
+        classUnderTest.textArea.setText("10.5");
+        Double anwer = classUnderTest.reader();
+        assertEquals(10.5, anwer);
+    }
     
+  
     @Test 
     void appPanelIsCreated() {
         assertNotNull(classUnderTest, "app should have a panel object");

@@ -8,6 +8,7 @@ package calculatordemo2;
  * Additional math functions can easily be added here. 
  * @author Soria, Steckler, Tesic, Metsis
  */
+
 public class Calculator{
 
 	public enum twoOperator {
@@ -15,17 +16,17 @@ public class Calculator{
 	}
 
 	public enum singleOperator {
-		square, squareRoot, oneDevidedBy, cos, sin, tan
+		square, squareRoot, oneDevidedBy, cos, sin, tan, ATan,ASin,ACos;
 	}
 
-	private Double num1, num2;
-	private twoOperator mode = twoOperator.normal;
+	public Double num1, num2;
+	public twoOperator mode = twoOperator.normal;
 
 	/**
 	 * The final call in enumeration that returns the specificed operation result
 	 * @return returns the called operation's result
 	 */
-	private Double twoOpOperations() {
+	public Double twoOpOperations() {
 		if (mode == twoOperator.normal) {
 			return num2;
 		}
@@ -44,6 +45,7 @@ public class Calculator{
 		// never reach
 		throw new Error(); 
 	}
+	
 
 	/**
 	 * Handles = operand, and calls Primitives if not = operand, updates the number parameters and returns as necessary
@@ -113,7 +115,17 @@ public class Calculator{
 		if (newMode == singleOperator.tan) {
 			return Math.tan(num);
 		}
+		if(newMode == singleOperator.ATan){
+			return Math.atan(num);
+		}
+		if(newMode == singleOperator.ASin){
+			return Math.asin(num);
+		}
+		if(newMode == singleOperator.ACos){
+			return Math.acos(num);
+		}
 		// never reach
+		
 		throw new Error();
 	}
 
